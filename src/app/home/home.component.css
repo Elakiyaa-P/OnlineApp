@@ -1,0 +1,107 @@
+.login-form {
+    border: 2px solid black;
+    width: 340px;
+    height: 315px;
+    margin: 50px auto;
+    /* padding-bottom: 10px; */
+}
+
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+.login-form h2 {
+    margin: 0 0 15px;
+}
+
+.form-control,
+.btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+
+.blog .carousel-indicators {
+    left: 0;
+    top: auto;
+    bottom: -40px;
+}
+
+
+/* The colour of the indicators */
+
+.blog .carousel-indicators li {
+    background: #a3a3a3;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+}
+
+.blog .carousel-indicators .active {
+    background: #707070;
+}
+
+
+/* .btn {        
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+} */
+
+.text {
+    margin-left: 40%;
+    color: maroon;
+}
+
+footer {
+    background-color: #262a2b;
+    margin: 0;
+    padding: 5px;
+    position: absolute;
+    /* bottom: 0em; */
+    width: 100%;
+}
+
+.footer {
+    color: white;
+}
+
+h3 {
+    padding-left: 20px;
+    /* font-family: great vibes; */
+    font-weight: bold;
+}
+
+p {
+    font-weight: bold;
+    color: black;
+}
+
+
+/* .carousel-caption{
+    padding-top: 10px;
+    border:2px solid black;
+} */
+
+
+/* body{
+    background: #77A1D3;  /* fallback for old browsers */
+
+
+/* background: -webkit-linear-gradient(to right, #E684AE, #79CBCA, #77A1D3);  Chrome 10-25, Safari 5.1-6 */
+
+
+/* background: linear-gradient(to right, #E684AE, #79CBCA, #77A1D3); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+/* }  */
+
+body {
+    background-color: rgb(255, 232, 235);
+}
+
+.btn {
+    color: white;
+}

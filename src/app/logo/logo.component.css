@@ -1,0 +1,56 @@
+.big{
+    font-size: 49px;
+    margin: 20px 0;
+    color: tomato;
+    font-family: great vibes;
+    font-weight: bold;
+}
+.banner-info, .banner-image{
+    margin: 30px 0;
+}
+a.btn{
+    margin: 30px 10px;
+    width: 150px;
+    padding: 10px;
+    border-radius: 20px;
+}
+a.btn-second{
+    background-color: rgb(16, 236, 82); 
+    border: 1px solid darkgreen;
+    color: #fff;
+    font-weight: bold;
+}
+a.btn-first{
+    /* background: transparent; */
+    background-color: rgb(16, 203, 236);
+    border: 1px solid darkblue;
+    color: #fff;
+    font-weight: bold;
+}
+a.btn:hover{
+    background: rgb(177, 236, 16);
+    border:none;
+    color:#333;
+    font-weight: bold;
+    box-shadow: 5px 5px 10px #999;
+    transition: 0.3s;
+}
+body{
+    /* background-image: url('D:/Intern Learning/New MFRP/project/dreamJob.jpg'); */
+    background-image: url('https://images.unsplash.com/photo-1560699007-c9957dc3ae51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1458&q=80');
+    background-size: cover;
+}
+
+body.background-image {
+    opacity: 0.5;
+  }
+
+h1, h3{
+    font-family: great vibes;
+    font-weight: bold;
+}
+
+div.container{
+    padding-top: 100px ;
+    padding-bottom: 100px ;
+}

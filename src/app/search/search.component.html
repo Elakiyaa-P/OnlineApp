@@ -1,0 +1,23 @@
+<br>
+<div class="search">
+    <input type="search" placeholder="Enter the details" [(ngModel)]="searchTerm">&nbsp;
+    <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+  </button>
+</div>
+
+<div class="row">
+    <div class="col-md-3 mx-max my-4" *ngFor="let job of jobs|filter:searchTerm">
+        <div class="card bg-light mb-3">
+            <div class="card-header">{{job.jobTitle}}</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Company Name: {{job.companyName}}</li>
+                <li class="list-group-item">Salary: {{job.salaryPackage}}</li>
+                <li class="list-group-item">Location: {{job.location}}</li>
+                <li class="list-group-item">Skills: {{job.skillsRequired}}</li>
+                <li class="list-group-item">Exp Req: {{job.experienceRequired}}</li>
+                <li class="list-group-item">Job Description: {{job.jobDescription}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

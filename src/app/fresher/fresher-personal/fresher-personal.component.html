@@ -1,0 +1,207 @@
+<!-- <div style="margin:opx auto; width: 50%;margin-left: 25%;margin-top: 2%; padding: 10px;">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Personal Details</a>
+            </div>
+        </div>
+    </nav> -->
+
+<body>
+    <div class="card" style="width: 50%;margin-left: 25%;">
+        <h4 class="card-header"><i class="fa fa-user"></i> Personal Details</h4>
+        <div class="card-body">
+            <form action="" #myForm="ngForm">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" ngModel placeholder="Enter your Full Name" #name="ngModel" [ngClass]="{'form-control':true,
+              'is-invalid':!name.valid &&
+              name.touched, 'is-valid': name.valid}" name="name" required pattern="^[A-Za-z_ ]*$" id="name" [(ngModel)]="job.name" aria-describedby="" />
+                    <small *ngIf="name.errors?.required && name.touched">Field is required!!</small>
+                    <small *ngIf="name.errors?.pattern && name.touched">Enter String</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailId">Email Id</label>
+                    <input type="text" ngModel placeholder="Enter your Email Id" #emailId="ngModel" [ngClass]="{'form-control':true,
+              'is-invalid':!emailId.valid &&
+              emailId.touched, 'is-valid': emailId.valid}" name="emailId" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" id="emailId" [(ngModel)]="job.emailId" aria-describedby="" />
+                    <small *ngIf="emailId.errors?.required && emailId.touched">Field is
+              required!!</small>
+                    <small *ngIf="emailId.errors?.pattern && emailId.touched">Enter Valid
+              Email Id</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" ngModel placeholder="Password" #password="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!password.valid &&
+              password.touched, 'is-valid': password.valid}" name="password" required pattern="^[a-zA-Z0-9?=.*!@#$%^&*_\-\s]+$" id="password" [(ngModel)]="job.password" aria-describedby="" />
+                    <small *ngIf="password.errors?.required && password.touched">Field is
+              required!!</small>
+                    <small *ngIf="password.errors?.pattern && password.touched">Password
+              should include alphabets, numbers
+              and
+              special characters!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile No</label>
+                    <input type="text" ngModel placeholder="Mobile No" #mobile="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!mobile.valid &&
+              mobile.touched, 'is-valid': mobile.valid}" name="mobile" required pattern="^[0-9]{10}$" id="mobile" [(ngModel)]="job.mobile" aria-describedby="" />
+                    <small *ngIf="mobile.errors?.required && mobile.touched">Field is
+              required!!</small>
+                    <small *ngIf="mobile.errors?.pattern && mobile.touched">Enter 10 Digits</small>
+                </div>
+
+                <div ngModelGroup="address">
+                    <label for="line1">Address </label>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" ngModel id="line1" #line1="ngModel" [ngClass]="{'form-control': true,
+                  'is-invalid': !line1.valid && line1.touched,
+                  'is-valid': line1.valid}" name="line1" required maxlength="150" placeholder="Address Line 1" [(ngModel)]="job.line1">
+                            <small *ngIf="line1.errors?.required && line1.touched">Field is
+                  required</small>
+                            <small *ngIf="line1.errors?.maxlength && line1.touched">Address
+                  Should be restricted upto
+                  only 150 characters!</small>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" ngModel id="line2" #line2="ngModel" [ngClass]="{'form-control': true,
+                  'is-invalid': !line2.valid && line2.touched,
+                  'is-valid': line2.valid}" name="line2" required maxlength="150" placeholder="Address Line 2" [(ngModel)]="job.line2">
+                            <small *ngIf="line2.errors?.required && line2.touched">Field is
+                  required</small>
+                            <small *ngIf="line2.errors?.maxlength && line2.touched">Address
+                  Should be restricted upto
+                  only 150 characters!</small>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <select id="inputState" class="form-control" ngModel name="city" #city="ngModel" [(ngModel)]="job.city" required [ngClass]="{'form-control': true,
+                      'is-invalid': !city.valid && city.touched,
+                      'is-valid': city.valid}">
+                      <option selected value="">City</option>
+                      <option *ngFor="let item of cities" [value]="item">{{item}}</option>
+                    </select>
+                                    <small *ngIf="city.errors?.required && city.touched">Field is
+                      required</small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <select id="inputState" class="form-control" ngModel name="state" #state="ngModel" [(ngModel)]="job.state" required [ngClass]="{'form-control': true,
+                      'is-invalid': !state.valid && state.touched,
+                      'is-valid': state.valid}">
+                      <option selected value="">State</option>
+                      <option *ngFor="let item of states" [value]="item">{{item}}</option>
+                    </select>
+                                    <small *ngIf="state.errors?.required && state.touched">Field is
+                      required</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ngModel #postalCode="ngModel" [ngClass]="{'form-control': true,
+                      'is-invalid': !postalCode.valid && postalCode.touched,
+                      'is-valid': postalCode.valid}" name="postalCode" required pattern="^[0-9]{6}$" id="postalCode" placeholder="Postal code" [(ngModel)]="job.postalCode">
+                                    <small *ngIf="postalCode.errors?.required &&
+                      postalCode.touched">Field is
+                      required</small>
+                                    <small *ngIf="postalCode.errors?.pattern && postalCode.touched">Postal
+                      Code should be 6 Digits!!</small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ngModel #country="ngModel" [ngClass]="{'form-control': true,
+                      'is-invalid': !country.valid && country.touched,
+                      'is-valid': country.valid}" name="country" required id="country" placeholder="Country" [(ngModel)]="job.country">
+                                    <small *ngIf="country.errors?.required && country.touched">Field
+                      is required</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ngModelGroup="workExperience">
+                    <label for="year">Work Experience </label>
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ngModel #year="ngModel" [ngClass]="{'form-control': true,
+                      'is-invalid': !year.valid && year.touched,
+                      'is-valid': year.valid && year.touched}" name="year" required pattern="^[0-9]{4}*$" id="year" placeholder="Year" [(ngModel)]="job.year">
+                                    <small *ngIf="year.errors?.required && year.touched">Field is
+                      required</small>
+                                    <small *ngIf="year.errors?.pattern && year.touched">Enter 4
+                      digit year!</small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ngModel #month="ngModel" [ngClass]="{'form-control': true,
+                      'is-invalid': !month.valid && month.touched,
+                      'is-valid': month.valid && month.touched}" name="month" required pattern="^[0-9]{2}*$" id="month" placeholder="Month" [(ngModel)]="job.month">
+                                    <small *ngIf="month.errors?.required && month.touched">Field is
+                      required</small>
+                                    <small *ngIf="month.errors?.pattern && month.touched">Enter 2
+                      digit month</small>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Skills</label>
+                    <input type="text" ngModel placeholder="Skills-Eg:- HTML, React, Angular" #skills="ngModel" [ngClass]="{'form-control':true,
+              'is-invalid':!skills.valid &&
+              skills.touched, 'is-valid': skills.valid}" name="skills" required maxlength="200" id="skills" [(ngModel)]="job.skills" aria-describedby="" />
+                    <small *ngIf="skills.errors?.required && skills.touched">Field is
+              required!!</small>
+                    <small *ngIf="skills.errors?.maxlength && skills.touched">Valid upto 200
+              characters</small>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label for="resume">Resume</label>
+                    <input type="text" ngModel placeholder="Upload CV" #resume="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!resume.valid &&
+              resume.touched, 'is-valid': resume.valid}" name="resume" required id="resume" [(ngModel)]="job.resume" aria-describedby="" />
+                    <small *ngIf="resume.errors?.required && resume.touched">Field is
+              required!!</small>
+                </div> -->
+
+                <div class="form-group">
+                    <label for="resume">Resume</label>
+                    <input type="file" name="file" multiple (change)="selectImage($event)" />
+                </div>
+
+                <div class="row justify-content-center">
+                    <button type="submit" [disabled]="!myForm.form.valid" (click)="register(); onSubmit()" class="btn btn-primary">Register</button>&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-link"><a routerLink="/fresher">Back</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

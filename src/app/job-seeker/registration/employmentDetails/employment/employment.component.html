@@ -1,0 +1,76 @@
+<body>
+    <div class="card" style="width: 50%;margin-left: 25%;">
+        <h4 class="card-header"><i class="fa fa-mortar-board"></i> Employment Details</h4>
+        <div class="card-body">
+            <form action="" #myForm="ngForm">
+
+                <div class="form-group">
+                    <label for="currentEmployer">Current Employer</label>
+                    <input type="text" ngModel placeholder="Enter Current Employer" #currentEmployer="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!currentEmployer.valid && currentEmployer.touched, 'is-valid': currentEmployer.valid}" name="currentEmployer" required
+                        pattern="^[A-Za-z_ ]*$" id="currentEmployer" [(ngModel)]="job.currentEmployer" aria-describedby="" />
+                    <small *ngIf="currentEmployer.errors?.required && currentEmployer.touched">Field is required!!</small>
+                    <small *ngIf="currentEmployer.errors?.pattern && currentEmployer.touched">Enter String</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" ngModel placeholder="Destination" #destination="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!destination.valid && destination.touched, 'is-valid': destination.valid}" name="destination" required pattern="^[A-Za-z_ ]*$" id="destination"
+                        [(ngModel)]="job.destination" aria-describedby="" />
+                    <small *ngIf="destination.errors?.required && destination.touched">Field is required!!</small>
+                    <small *ngIf="destination.errors?.pattern && destination.touched">Enter String</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="currentJobDescription">Job Description</label>
+                    <input type="text" ngModel placeholder="Job Description" #currentJobDescription="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!currentJobDescription.valid && currentJobDescription.touched, 'is-valid': currentJobDescription.valid}" name="currentJobDescription"
+                        required pattern="^[A-Za-z_ ]*$" maxlength="200" id="currentJobDescription" [(ngModel)]="job.currentJobDescription" aria-describedby="" />
+                    <small *ngIf="currentJobDescription.errors?.required && currentJobDescription.touched">Field is
+          required!!</small>
+                    <small *ngIf="currentJobDescription.errors?.pattern && currentJobDescription.errors?.maxlength && currentJobDescription.errors?.maxlength && currentJobDescription.touched">Enter
+          String</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="currentExperience">Experience in Months</label>
+                    <input type="text" ngModel placeholder="Months" #currentExperience="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!currentExperience.valid && currentExperience.touched, 'is-valid': currentExperience.valid}" name="currentExperience" required pattern="^[0-9]{2}$"
+                        id="currentExperience" [(ngModel)]="job.currentExperience" aria-describedby="" />
+                    <small *ngIf="currentExperience.errors?.required && currentExperience.touched">Field is
+          required!!</small>
+                    <small *ngIf="currentExperience.errors?.pattern && currentExperience.touched">Enter 2 Digit Number</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="previousEmployer">Previous Employer</label>
+                    <input type="text" ngModel placeholder="Enter Previous Employer" #previousEmployer="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!previousEmployer.valid && previousEmployer.touched, 'is-valid': previousEmployer.valid}" name="previousEmployer"
+                        required pattern="^[A-Za-z_ ]*$" id="previousEmployer" [(ngModel)]="job.previousEmployer" aria-describedby="" />
+                    <small *ngIf="previousEmployer.errors?.required && previousEmployer.touched">Field is required!!</small>
+                    <small *ngIf="previousEmployer.errors?.pattern && previousEmployer.touched">Enter String</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="previousJobDescription">Job Description</label>
+                    <input type="text" ngModel placeholder="Job Description" #previousJobDescription="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!previousJobDescription.valid && previousJobDescription.touched, 'is-valid': previousJobDescription.valid}" name="previousJobDescription"
+                        required pattern="^[A-Za-z_ ]*$" maxlength="200" id="previousJobDescription" [(ngModel)]="job.previousJobDescription" aria-describedby="" />
+                    <small *ngIf="previousJobDescription.errors?.required && previousJobDescription.touched">Field is
+          required!!</small>
+                    <small *ngIf="previousJobDescription.errors?.pattern && previousJobDescription.errors?.maxlength && previousJobDescription.errors?.maxlength && previousJobDescription.touched">Enter
+          String</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="previousExperience">Experience in Months</label>
+                    <input type="text" ngModel placeholder="Months" #previousExperience="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!previousExperience.valid && previousExperience.touched, 'is-valid': previousExperience.valid}" name="previousExperience" required
+                        pattern="^[0-9]{2}$" id="previousExperience" [(ngModel)]="job.previousExperience" aria-describedby="" />
+                    <small *ngIf="previousExperience.errors?.required && previousExperience.touched">Field is
+          required!!</small>
+                    <small *ngIf="previousExperience.errors?.pattern && previousExperience.touched">Enter 2 Digit Number</small>
+                </div>
+
+                <div class="row justify-content-center">
+                    <button type="button" [disabled]="!myForm.form.valid" (click)="submitHandler()" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-link"><a routerLink="/job-seeker">Back</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

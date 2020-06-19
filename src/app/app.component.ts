@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService, UserDetails } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'project';
+  title = 'Elakiyaa';
+  details: UserDetails;
+
+  constructor(public auth: AuthenticationService){ }
+
 }

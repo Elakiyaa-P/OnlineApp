@@ -1,0 +1,345 @@
+<!-- <div class="card" style="width: 50%;margin-left: 25%;margin-top: 2%;">
+  <h4 class="card-header">Admin | Employer Post Jobs (Add Job)</h4>
+  <div class="card-body">
+    <form style="width:100%;" [formGroup]="reactiveForm" >
+
+      <div class="form-group">
+        <label for="jobId">Job Id</label>
+        <input type="text" placeholder="Enter Job Id"
+          [ngClass]="{'form-control':true, 'is-invalid':!jobId.valid && jobId.touched, 'is-valid': jobId.valid}"
+          formControlName="jobId" id="jobId" aria-describedby="" />
+        <small *ngIf="jobId.errors?.required && jobId.touched">Field is required!!</small>
+        <small *ngIf="jobId.errors?.minlength && jobId.errors?.maxlength && jobId.touched">JobId should be of
+          length 12!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="jobTitle">Job Title</label>
+        <input type="text" placeholder="Enter Job title"
+          [ngClass]="{'form-control':true, 'is-invalid':!jobTitle.valid && jobTitle.touched, 'is-valid': jobTitle.valid}"
+          formControlName="jobTitle" id="jobTitle" id="" aria-describedby="" />
+        <small *ngIf="jobTitle.errors?.required && jobTitle.touched">Field is required!!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="jobPostedDate">Job Posted Date</label>
+        <input type="date" placeholder="Enter Job Posted Date(YYYY-MM-DD)"
+          [ngClass]="{'form-control':true, 'is-invalid':!jobPostedDate.valid && jobPostedDate.touched, 'is-valid': jobPostedDate.valid}"
+          formControlName="jobPostedDate" id="jobPostedDate" aria-describedby="" />
+        <small *ngIf="jobPostedDate.errors?.required && jobPostedDate.touched">Field is required!!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role</label>
+        <input type="text" placeholder="Role"
+          [ngClass]="{'form-control':true, 'is-invalid':!role.valid && role.touched, 'is-valid': role.valid}"
+          formControlName="role" id="role" aria-describedby="" />
+        <small *ngIf="role.errors?.required && role.touched">Field is required!!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="responsibility">Responsibility</label>
+        <textarea rows="5" placeholder="Responsibility"
+          [ngClass]="{'form-control':true, 'is-invalid':!responsibility.valid && responsibility.touched, 'is-valid': responsibility.valid}"
+          formControlName="responsibility" id="responsibility" aria-describedby=""></textarea>
+        <small *ngIf="responsibility.errors?.required && responsibility.touched">Field is required!!</small>
+        <small *ngIf="jobId.errors?.maxlength && jobId.touched">Maximum length is 300</small>
+      </div>
+
+      <div class="form-group">
+        <label for="companyName">Company Name</label>
+        <input type="text" placeholder="Enter Company Name"
+          [ngClass]="{'form-control':true, 'is-invalid':!companyName.valid && companyName.touched, 'is-valid': companyName.valid}"
+          formControlName="companyName" id="companyName" aria-describedby="" />
+        <small *ngIf="companyName.errors?.required && companyName.touched">Field is required!!</small>
+        <small *ngIf="jobId.errors?.maxlength && jobId.touched">Maximum Length is 100</small>
+      </div>
+
+      <div class="form-group">
+        <label for="experienceRequired">Experience</label>
+        <input type="text" placeholder="Experiences"
+          [ngClass]="{'form-control':true, 'is-invalid':!experienceRequired.valid && experienceRequired.touched, 'is-valid': experienceRequired.valid}"
+          formControlName="experienceRequired" id="experienceRequired" aria-describedby="" />
+        <small *ngIf="experienceRequired.errors?.required && experienceRequired.touched">Field is required!!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="salaryPackage">Salary Range</label>
+        <input type="text" placeholder="Salary Range"
+          [ngClass]="{'form-control':true, 'is-invalid':!salaryPackage.valid && salaryPackage.touched, 'is-valid': salaryPackage.valid}"
+          formControlName="salaryPackage" id="salaryPackage" aria-describedby="" />
+        <small *ngIf="salaryPackage.errors?.required && salaryPackage.touched">Field is required!!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="positionsAvailable">No of Positions</label>
+        <input type="text" placeholder="No of Positions"
+          [ngClass]="{'form-control':true, 'is-invalid':!positionsAvailable.valid && positionsAvailable.touched, 'is-valid': positionsAvailable.valid}"
+          formControlName="positionsAvailable" id="positionsAvailable" aria-describedby="" />
+        <small *ngIf="positionsAvailable.errors?.required && positionsAvailable.touched">Field is required!!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location</label>
+        <select id="inputState" formControlName="location" [ngClass]="{'form-control': true,
+'is-invalid': !location.valid && location.touched,
+'is-valid': location.valid}">
+          <option selected [ngValue]="null">Location</option>
+          <option *ngFor="let item of places" [value]="item">{{item}}</option>
+        </select>
+        <small *ngIf="location.errors?.required && location.touched">Field is required</small>
+        <small *ngIf="location.errors?.pattern && location.touched">Enter String!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="skillsRequired">Skills and Qualifications</label>
+        <input type="text" placeholder="Skills and Qualifications"
+          [ngClass]="{'form-control':true, 'is-invalid':!skillsRequired.valid && skillsRequired.touched, 'is-valid': skillsRequired.valid}"
+          formControlName="skillsRequired" id="skillsRequired" aria-describedby="" />
+        <small *ngIf="skillsRequired.errors?.required && skillsRequired.touched">Field is required!!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="degree">Degree</label>
+        <select id="inputState" formControlName="degree" [ngClass]="{'form-control': true,
+'is-invalid': !degree.valid && degree.touched,
+'is-valid': degree.valid}">
+          <option selected [ngValue]="null">UG/PG</option>
+          <option *ngFor="let item of graduate" [value]="item">{{item}}</option>
+        </select>
+        <small *ngIf="degree.errors?.required && degree.touched">Field is required</small>
+      </div>
+
+      <div class="form-group">
+        <label for="companyInformation">Company Info</label>
+        <textarea rows="5" placeholder="About Company"
+          [ngClass]="{'form-control':true, 'is-invalid':!companyInformation.valid && companyInformation.touched, 'is-valid': companyInformation.valid}"
+          formControlName="companyInformation" id="companyInformation" aria-describedby=""></textarea>
+        <small *ngIf="companyInformation.errors?.required && companyInformation.touched">Field is required!!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="employmentType">Employment Type</label>
+        <select id="inputState" formControlName="employmentType" [ngClass]="{'form-control': true,
+'is-invalid': !employmentType.valid && employmentType.touched,
+'is-valid': employmentType.valid}">
+          <option selected [ngValue]="null">Full Time/ Part Time</option>
+          <option *ngFor="let item of employment" [value]="item">{{item}}</option>
+        </select>
+        <small *ngIf="employmentType.errors?.required && employmentType.touched">Field is required</small>
+      </div>
+
+      <div class="form-group">
+        <label for="industryType">Industry Type</label>
+        <select id="inputState" formControlName="industryType" [ngClass]="{'form-control': true,
+'is-invalid': !industryType.valid && industryType.touched,
+'is-valid': industryType.valid}">
+          <option selected [ngValue]="null">Hardware/ Software</option>
+          <option *ngFor="let item of industry" [value]="item">{{item}}</option>
+        </select>
+        <small *ngIf="industryType.errors?.required && industryType.touched">Field is required</small>
+      </div>
+
+      <div class="form-group">
+        <label for="searchKeyword">Search Keyword</label>
+        <input type="text" placeholder="Angular, React"
+          [ngClass]="{'form-control':true, 'is-invalid':!searchKeyword.valid && searchKeyword.touched, 'is-valid': searchKeyword.valid}"
+          formControlName="searchKeyword" id="searchKeyword" aria-describedby="" />
+        <small *ngIf="searchKeyword.errors?.required && searchKeyword.touched">Field is required!!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="jobDescription">Job Description</label>
+        <textarea rows="5" placeholder="Job Description"
+          [ngClass]="{'form-control':true, 'is-invalid':!jobDescription.valid && jobDescription.touched, 'is-valid': jobDescription.valid}"
+          formControlName="jobDescription" id="jobDescription" aria-describedby=""></textarea>
+        <small *ngIf="jobDescription.errors?.required && jobDescription.touched">Field is required!!</small>
+        <small *ngIf="jobDescription.errors?.maxlength && jobDescription.touched">Maximum Length is 500</small>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-2">
+          <button type="button" [disabled]="!reactiveForm.valid" (submit)="addJob()" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+<body>
+    <div class="card" style="width: 50%;margin-left: 25%;">
+        <h4 class="card-header">Add Jobs</h4>
+        <div class="card-body">
+            <!-- <form (submit)="addJob()"> -->
+            <form action="" #myForm="ngForm">
+
+                <div class="form-group">
+                    <label for="jobId">Job ID</label>
+                    <input type="text" ngModel name="jobId" #jobId="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !jobId?.valid && jobId?.touched,
+        'is-valid': jobId?.valid && jobId?.touched}" required minlength="12" maxlength="12" id="jobId" placeholder="Enter Job Id" [(ngModel)]="job.jobId">
+                    <small id="fnHelp" *ngIf="jobId?.errors?.required && jobId?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="jobId?.errors?.minlength && jobId?.errors?.maxlength && jobId?.touched" class="form-text custom-invalid-feedback">Job Id should be 12 characters.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="jobTitle">Job Title</label>
+                    <input type="text" ngModel name="jobTitle" #jobTitle="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !jobTitle?.valid && jobTitle?.touched,
+        'is-valid': jobTitle?.valid && jobTitle?.touched}" required pattern="^[A-Za-z_ ]*$" id="jobTitle" placeholder="Enter Job Title" [(ngModel)]="job.jobTitle">
+                    <small id="fnHelp" *ngIf="jobTitle?.errors?.required && jobTitle?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="jobTitle?.errors?.pattern && jobTitle?.touched" class="form-text custom-invalid-feedback">Job Title should be String!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="jobPostedDate">Job Posted Date</label>
+                    <input type="date" ngModel name="jobPostedDate" #jobPostedDate="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !jobPostedDate?.valid && jobPostedDate?.touched,
+        'is-valid': jobPostedDate?.valid && jobPostedDate?.touched}" required id="jobPostedDate" placeholder="Enter Job Posted Date" [(ngModel)]="job.jobPostedDate">
+                    <small id="fnHelp" *ngIf="jobPostedDate?.errors?.required && jobPostedDate?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <input type="text" ngModel name="role" #role="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !role?.valid && role?.touched,
+        'is-valid': role?.valid && role?.touched}" required pattern="^[A-Za-z_ ]*$" id="role" placeholder="Role" [(ngModel)]="job.role">
+                    <small id="fnHelp" *ngIf="role?.errors?.required && role?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="role?.errors?.pattern && role?.touched" class="form-text custom-invalid-feedback">Role
+          should be String!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="responsibility">Responsibility</label>
+                    <textarea rows="5" ngModel name="responsibility" #responsibility="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !responsibility?.valid && responsibility?.touched,
+        'is-valid': responsibility?.valid && responsibility?.touched}" required pattern="^[A-Za-z_ ]*$" maxlength="300" id="responsibility" placeholder="Responsibility" [(ngModel)]="job.responsibility"></textarea>
+                    <small id="fnHelp" *ngIf="responsibility?.errors?.required && responsibility?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="responsibility?.errors?.pattern && responsibility?.errors?.maxlength && responsibility?.touched" class="form-text custom-invalid-feedback">Responsibility should be upto 300 characters!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" ngModel name="companyName" #companyName="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !companyName?.valid && companyName?.touched,
+        'is-valid': companyName?.valid && companyName?.touched}" required pattern="^[A-Za-z_ ]*$" maxlength="100" id="companyName" placeholder="Company Name" [(ngModel)]="job.companyName">
+                    <small id="fnHelp" *ngIf="companyName?.errors?.required && companyName?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="companyName?.errors?.pattern && companyName?.errors?.maxlength && responsibility?.touched" class="form-text custom-invalid-feedback">Company Name should be upto 100 characters!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="experienceRequired">Experience Required</label>
+                    <input type="text" ngModel name="experienceRequired" #experienceRequired="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !experienceRequired?.valid && experienceRequired?.touched,
+        'is-valid': experienceRequired?.valid && experienceRequired?.touched}" required pattern="^[0-9]*$" id="experienceRequired" placeholder="Experience Required" [(ngModel)]="job.experienceRequired">
+                    <small id="fnHelp" *ngIf="experienceRequired?.errors?.required && experienceRequired?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="experienceRequired?.errors?.pattern && experienceRequired?.touched" class="form-text custom-invalid-feedback">Experience should be in Digits!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="salaryPackage">Salary Package</label>
+                    <input type="text" ngModel name="salaryPackage" #salaryPackage="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !salaryPackage?.valid && salaryPackage?.touched,
+        'is-valid': salaryPackage?.valid && salaryPackage?.touched}" required pattern="^[0-9]*$" id="salaryPackage" placeholder="Salary Package" [(ngModel)]="job.salaryPackage">
+                    <small id="fnHelp" *ngIf="salaryPackage?.errors?.required && salaryPackage?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="salaryPackage?.errors?.pattern && salaryPackage?.touched" class="form-text custom-invalid-feedback">Salary should be in Digits!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="positionsAvailable">No. Of Positions</label>
+                    <input type="text" ngModel name="positionsAvailable" #positionsAvailable="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !positionsAvailable?.valid && positionsAvailable?.touched,
+        'is-valid': positionsAvailable?.valid && positionsAvailable?.touched}" required pattern="^[0-9]*$" id="positionsAvailable" placeholder="No. Of Positions" [(ngModel)]="job.positionsAvailable">
+                    <small id="fnHelp" *ngIf="positionsAvailable?.errors?.required && positionsAvailable?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="positionsAvailable?.errors?.pattern && positionsAvailable?.touched" class="form-text custom-invalid-feedback">Positions Available should be in Digits!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <select id="location" ngModel required name="location" #location="ngModel" [ngClass]="{'form-control' : true,
+                  'is-invalid' : !location?.valid && location?.touched,
+                  'is-valid' : location?.valid && location?.touched}" name="location" class="form-control" [(ngModel)]="job.location">
+          <option selected value="">Location</option>
+          <option *ngFor="let item of places" [value]="item">{{item}}</option>
+        </select>
+                    <small id="fnHelp" *ngIf="location?.errors?.required && location?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="skillsRequired">Skills Required</label>
+                    <input type="text" ngModel name="skillsRequired" #skillsRequired="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !skillsRequired?.valid && skillsRequired?.touched,
+        'is-valid': skillsRequired?.valid && skillsRequired?.touched}" required pattern="^[A-Za-z, ]*$" id="skillsRequired" placeholder="Skills Required" [(ngModel)]="job.skillsRequired">
+                    <small id="fnHelp" *ngIf="skillsRequired?.errors?.required && skillsRequired?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="skillsRequired?.errors?.pattern && skillsRequired?.touched" class="form-text custom-invalid-feedback">Skills should be String!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="degree">Degree</label>
+                    <select id="degree" ngModel required name="degree" #degree="ngModel" [ngClass]="{'form-control' : true,
+                  'is-invalid' : !degree?.valid && degree?.touched,
+                  'is-valid' : degree?.valid && degree?.touched}" name="degree" class="form-control" [(ngModel)]="job.degree">
+          <option selected value="">UG/PG</option>
+          <option *ngFor="let item of graduate" [value]="item">{{item}}</option>
+        </select>
+                    <small id="fnHelp" *ngIf="degree?.errors?.required && degree?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="companyInformation">Company Information</label>
+                    <textarea rows="5" ngModel name="companyInformation" #companyInformation="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !companyInformation?.valid && companyInformation?.touched,
+        'is-valid': companyInformation?.valid && companyInformation?.touched}" required pattern="^[A-Za-z_ ]*$" id="companyInformation" placeholder="Enter Company Information" [(ngModel)]="job.companyInformation"></textarea>
+                    <small id="fnHelp" *ngIf="companyInformation?.errors?.required && companyInformation?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="companyInformation?.errors?.pattern && companyInformation?.touched" class="form-text custom-invalid-feedback">Company Information should be String!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="employmentType">Employment Type</label>
+                    <select id="employmentType" ngModel required name="employmentType" #employmentType="ngModel" [ngClass]="{'form-control' : true,
+                  'is-invalid' : !employmentType?.valid && employmentType?.touched,
+                  'is-valid' : employmentType?.valid && employmentType?.touched}" name="employmentType" class="form-control" [(ngModel)]="job.employmentType">
+          <option selected value="">Full Time/ Part Time</option>
+          <option *ngFor="let item of employment" [value]="item">{{item}}</option>
+        </select>
+                    <small id="fnHelp" *ngIf="employmentType?.errors?.required && employmentType?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="industryType">Industry Type</label>
+                    <select id="industryType" ngModel required name="industryType" #industryType="ngModel" [ngClass]="{'form-control' : true,
+                  'is-invalid' : !industryType?.valid && industryType?.touched,
+                  'is-valid' : industryType?.valid && industryType?.touched}" name="industryType" class="form-control" [(ngModel)]="job.industryType">
+          <option selected value="">Hardware/ Software</option>
+          <option *ngFor="let item of industry" [value]="item">{{item}}</option>
+        </select>
+                    <small id="fnHelp" *ngIf="industryType?.errors?.required && industryType?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="searchKeyword">Search Keyword</label>
+                    <input type="text" ngModel name="searchKeyword" #searchKeyword="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !searchKeyword?.valid && searchKeyword?.touched,
+        'is-valid': searchKeyword?.valid && searchKeyword?.touched}" required pattern="^[A-Za-z_ ]*$" id="searchKeyword" placeholder="Enter Search Keyword" [(ngModel)]="job.searchKeyword">
+                    <small id="fnHelp" *ngIf="searchKeyword?.errors?.required && searchKeyword?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="searchKeyword?.errors?.pattern && searchKeyword?.touched" class="form-text custom-invalid-feedback">Search should be String!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="jobDescription">Job Description</label>
+                    <textarea rows="5" ngModel name="jobDescription" #jobDescription="ngModel" [ngClass]="{'form-control': true, 
+        'is-invalid': !jobDescription?.valid && jobDescription?.touched,
+        'is-valid': jobDescription?.valid && jobDescription?.touched}" required pattern="^[A-Za-z_ ]*$" maxlength="500" id="jobDescription" placeholder="Enter Job Description" [(ngModel)]="job.jobDescription"></textarea>
+                    <small id="fnHelp" *ngIf="jobDescription?.errors?.required && jobDescription?.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                    <small id="fnHelp" *ngIf="jobDescription?.errors?.pattern && jobDescription?.errors?.maxlength && jobDescription?.touched" class="form-text custom-invalid-feedback">Job Description should be String!</small>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                        <button type="button" [disabled]="!myForm.form.valid" (click)="addJob()" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

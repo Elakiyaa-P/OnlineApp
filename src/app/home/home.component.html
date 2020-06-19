@@ -1,0 +1,325 @@
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+
+                <!-- LOGO Form  -->
+                <form>
+                    <div style="margin:opx auto; width: 50%; margin-left: 20%;
+						margin-top: 10%; padding: 10px;">
+                        <!-- <h3 style="margin-left: 40%;">LOGO</h3><br> -->
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" width="250px" height="150px"><br><br>
+                        <div class="input-group">
+                            <input type="text" class="form-control" [(ngModel)]="text1" [ngModelOptions]="{standalone: true}" id="inputskills" placeholder="Skills">&nbsp;
+                            <input type="text" class="form-control" [(ngModel)]="text2" [ngModelOptions]="{standalone: true}" id="inputlocation" placeholder="Location"><br>&nbsp;
+                            <button type="button" class="btn btn-primary mb-2" routerLink='/search'> <i class="fa fa-search"></i> Find jobs</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Login Form  -->
+            <div class="col-4">
+                <div class="login-form">
+                    <form>
+                        <h3 class="text-center">Log in</h3>
+                        <div class="form-group">
+                            <input type="email" name="emailId" id="emailId" class="form-control" placeholder="Email id" [(ngModel)]="credentials.emailId" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" [(ngModel)]="credentials.password" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" (click)="login()" class="btn
+                                btn-primary btn-block">Submit</button>
+                            <!-- <h5 *ngIf="auth.isLoggedIn()">Logged In :) </h5> -->
+                            <!-- <a href='' class="text">Submit</a> -->
+                        </div>
+                        <div class="clearfix">
+                            <a href='' routerLink="/fresher">New User? Register as Fresher/ </a>
+                            <a href='' routerLink="/register">Experience? </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Without using Carousel -->
+
+    <!-- <h3> Hot Jobs </h3><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <h5>Cognizant Technology Solutions</h5>
+            <p>Role: Programmer Analyst Trainee</p>
+            <p>Experience: 3-5 yrs</p>
+            <p>Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+        </div>
+        <div class="col-sm">
+            <h5>Infosys</h5>
+            <p>Role: Associate Engineer</p>
+            <p>Experience: 2-3 yrs</p>
+            <p>Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+        </div>
+        <div class="col-sm">
+            <h5>Tata Consultancy Services</h5>
+            <p>Role: Programmer Analyst Trainee</p>
+            <p>Experience: 1-3 yrs</p>
+            <p>Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+        </div>
+    </div>
+</div>
+<hr> -->
+
+    <!-- Hot Jobs -- With using Carousel -->
+    <h3>Hot Jobs</h3><br>
+    <div class="container">
+        <div class="row blog">
+            <div class="col-md-12">
+                <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+
+                    <ol class="carousel-indicators">
+                        <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#blogCarousel" data-slide-to="1"></li>
+                    </ol>
+
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input type="image" src="data:image/jpeg;base64,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"
+                                        height="250" alt="Image" style="max-width:100%;">
+                                    <div class="carousel-caption">
+                                        <h5><a href='' routerLink="/hot-jobs">Cognizant</a></h5>
+                                        <p>Role: Angular Developer</p>
+                                        <p><i class="fa fa-black-tie"></i> Experience: 3-5 yrs</p>
+                                        <p><i class="fa fa-map-marker"></i> Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="data:image/jpeg;base64,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"
+                                        height="250" alt="Image" style="max-width:100%;">
+                                    <div class="carousel-caption">
+                                        <h5><a href='' routerLink="/hot-jobs">Infosys</a></h5>
+                                        <p>Role: Associate Engineer</p>
+                                        <p><i class="fa fa-black-tie"></i> Experience: 2-3 yrs</p>
+                                        <p><i class="fa fa-map-marker"></i> Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="data:image/jpeg;base64,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"
+                                        height="250" style="max-width:100%;">
+                                    <div class="carousel-caption">
+                                        <h5><a href='' routerLink="/hot-jobs">TCS</a></h5>
+                                        <p>Role: Programmer Analyst</p>
+                                        <p><i class="fa fa-black-tie"></i> Experience: 3-5 yrs</p>
+                                        <p><i class="fa fa-map-marker"></i> Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="data:image/jpeg;base64,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"
+                                        height="250" alt="Image" style="max-width:100%;">
+                                    <div class="carousel-caption">
+                                        <h5><a href='' routerLink="/hot-jobs">Accenture</a></h5>
+                                        <p>Role: Front End Developer</p>
+                                        <p><i class="fa fa-black-tie"></i> Experience: 3-5 yrs</p>
+                                        <p><i class="fa fa-map-marker"></i> Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.row-->
+                        </div>
+                        <!--.item-->
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDxUPDw8VFRUVFRUVFRUVFRUVFRUVFRUWFhUVFRUYHSggGB0lHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAZAAACAwEAAAAAAAAAAAAAAAAAAwECBAX/xAAfEAEBAQEBAQABBQAAAAAAAAAAAQIDESHwMUFhkaH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8Adyw2csFcsNnLAG8sNXPCnLLVzwC/PDRjKuMtGMgnGTc5Gcm5yAzkzOU5i8gIkXkTItICJEyLSJ8BXxPi3ifAV8Hi3ifAU8Hi/iPAU8R4Z4jwC7FbDbFbAKsUuTrFbAZ9ZL1lpsL1kGXWSN5bNZJ3kGLphm6Yb95Z+mQc7rhk64dLpll65By+uGXWfro9cMus/Qa+OWzlknlls5ZA3nlq55L55aeeQMxk/GVMZPzAWzDMxGYbmAMxeQSLyAJFpBIt4CPFvB4kEeJ8T4AR4PFgCvg8WAK+I8W8HgKeIsXR4BdithlitgFWF6h9imoDPqFay06hWoDJvJHTLZuM+8gxdMsnXLodMsvTIOb1wy6z9dDrll1kGnlls5ZZ+UbOUA7nlpxCucacQDMQ7EUxDswFswzMRmLyAtItIiReQBFpELQAkJBCQAASAQEgFfAkAqjxZAK2K2L1FAuxSw2xSgTYXqH6hWoDPuE7jTqE7gMfTLL0y3dIy9IDB1yy6z9b+sZNZ/gGjlGzlGblGvnAP5xpxCecaMQDMQ7MLzDsgtmGSK5XgLRaIi0BMShMBICQAAAAAAAACEgEISAVQsrQVqti9VoFWF6h2i9ARqE7jRoncBm6Rm6Rr3GbpAYusZdZ+tvWMuoB3KNfOMvJr5g08z8E4PwB2Tcl5NyC+V4rleAtExEWgJiUJBIAABIAAAAAAQAACEoBCFkArVatVaClL0ZVNAVonZ2itgz7Zukats3QGTrGXc+tfVl1AN5NfNk5NfMGnm0YZ8NGAOybkrJuQMi8Ui8BaLRWLQEpQkEgAAkAAAAAAAISgAAAQhKKCtVq1VoK0vS9U0BeidnaJ0BG2fo0bZ+gMvVl1+rV1ZdAvybObFyrXzoNfM/DPzp+AaMm5JybkDYvC8rwF4tFYmAslESCQAAShIAAAAAAQAARUoAK1KKCKrVqpQVqml6XoC9FbN0TsCds/Q/bN0Bm6s2r9aOtZtAnlWvlWHlWzlQbOdaMMvOtGKDTim5IxTc0Dsryl5q8AyLRSLQFolCQSlABIAAAAAAAAAAICACtSigiq1NVoK0vS+qXoC9FbpmqRugVus/SnbrN0oM/Wsur9P61m1QHKtnKufy018qDfzrRisfPTTig1Yp2azYp+aB+aZCc0yUDZVoXKtKBiVJVoCyVUgkISCQgAkIAABABARQCAraAqlqbVLQRql6q2qVqgpqk7pm6RugV0rN0p3SsvSgR1rLrX07rpk1Z79ActNnLTm8tNnLQOhz01c9MHPTVz0DbjR2KyY0fig1Zpmaz5puaB8q0pUq8oGyplLlWlAz1PqnqfQWSqPQWCPR6CQj1AJ9HqPUeglFqLUWgm1W0WqWgLVLRapqgjVK1VtUnVBXdI3pfemfpoC+mmXpo3ppl66Anrpl1TOumTWvoK8ttnLbmcttnLYOny01c9Ody21c9g6HPR+NMPPTTjQNmdG50yY0dnQNOaZms+dGTQHSrykyrSgbKt6VKtKBno9U9T6C/o9U9HoL+j1T0egt6j1X1HoLeotVtVtBa1S1Fql0CbS9aGtF60CNaK3oa0TvQI3pn6aW6aZumwU6aZeul+mmTrsCuu2XWl+u2XWgHNr5AA28GrCADVz/P7rTzAA/J2QANz+f6ZAAXyYACYsACUgAkQAAhIBCAAVqoAKqUAC9FaAArZHRIBn6M3T9wAZerJ1QAZOrLoAH/2Q=="
+                                        height="250" alt="Image" style="max-width:100%;">
+                                    <div class="carousel-caption">
+                                        <h5><a href='' routerLink="/hot-jobs">MBit
+												Wireless</a></h5>
+                                        <p>Role: Selenium Testing</p>
+                                        <p><i class="fa fa-black-tie"></i> Experience: 3-5 yrs</p>
+                                        <p><i class="fa fa-map-marker"></i> Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="data:image/jpeg;base64,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"
+                                        height="250" alt="Image" style="max-width:100%;">
+                                    <div class="carousel-caption">
+                                        <h5><a href='' routerLink="/hot-jobs">MAD
+												Street Den</a></h5>
+                                        <p>Role: Back End Developer</p>
+                                        <p><i class="fa fa-black-tie"></i> Experience: 3-5 yrs</p>
+                                        <p><i class="fa fa-map-marker"></i> Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="data:image/jpeg;base64,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"
+                                        height="250" alt="Image" style="max-width:100%;">
+                                    <div class="carousel-caption">
+                                        <h5><a href='' routerLink="/hot-jobs">ZOHO</a></h5>
+                                        <p>Role: DevOps Manager</p>
+                                        <p><i class="fa fa-black-tie"></i> Experience: 3-5 yrs</p>
+                                        <p><i class="fa fa-map-marker"></i> Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDxUPDw8VFRUVFRUVFRUVFRUVFRUVFRUWFhUVFRUYHSggGB0lHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAZAAACAwEAAAAAAAAAAAAAAAAAAwECBAX/xAAfEAEBAQEBAQABBQAAAAAAAAAAAQIDESHwMUFhkaH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8Adyw2csFcsNnLAG8sNXPCnLLVzwC/PDRjKuMtGMgnGTc5Gcm5yAzkzOU5i8gIkXkTItICJEyLSJ8BXxPi3ifAV8Hi3ifAU8Hi/iPAU8R4Z4jwC7FbDbFbAKsUuTrFbAZ9ZL1lpsL1kGXWSN5bNZJ3kGLphm6Yb95Z+mQc7rhk64dLpll65By+uGXWfro9cMus/Qa+OWzlknlls5ZA3nlq55L55aeeQMxk/GVMZPzAWzDMxGYbmAMxeQSLyAJFpBIt4CPFvB4kEeJ8T4AR4PFgCvg8WAK+I8W8HgKeIsXR4BdithlitgFWF6h9imoDPqFay06hWoDJvJHTLZuM+8gxdMsnXLodMsvTIOb1wy6z9dDrll1kGnlls5ZZ+UbOUA7nlpxCucacQDMQ7EUxDswFswzMRmLyAtItIiReQBFpELQAkJBCQAASAQEgFfAkAqjxZAK2K2L1FAuxSw2xSgTYXqH6hWoDPuE7jTqE7gMfTLL0y3dIy9IDB1yy6z9b+sZNZ/gGjlGzlGblGvnAP5xpxCecaMQDMQ7MLzDsgtmGSK5XgLRaIi0BMShMBICQAAAAAAAACEgEISAVQsrQVqti9VoFWF6h2i9ARqE7jRoncBm6Rm6Rr3GbpAYusZdZ+tvWMuoB3KNfOMvJr5g08z8E4PwB2Tcl5NyC+V4rleAtExEWgJiUJBIAABIAAAAAAQAACEoBCFkArVatVaClL0ZVNAVonZ2itgz7Zukats3QGTrGXc+tfVl1AN5NfNk5NfMGnm0YZ8NGAOybkrJuQMi8Ui8BaLRWLQEpQkEgAAkAAAAAAAISgAAAQhKKCtVq1VoK0vS9U0BeidnaJ0BG2fo0bZ+gMvVl1+rV1ZdAvybObFyrXzoNfM/DPzp+AaMm5JybkDYvC8rwF4tFYmAslESCQAAShIAAAAAAQAARUoAK1KKCKrVqpQVqml6XoC9FbN0TsCds/Q/bN0Bm6s2r9aOtZtAnlWvlWHlWzlQbOdaMMvOtGKDTim5IxTc0Dsryl5q8AyLRSLQFolCQSlABIAAAAAAAAAAICACtSigiq1NVoK0vS+qXoC9FbpmqRugVus/SnbrN0oM/Wsur9P61m1QHKtnKufy018qDfzrRisfPTTig1Yp2azYp+aB+aZCc0yUDZVoXKtKBiVJVoCyVUgkISCQgAkIAABABARQCAraAqlqbVLQRql6q2qVqgpqk7pm6RugV0rN0p3SsvSgR1rLrX07rpk1Z79ActNnLTm8tNnLQOhz01c9MHPTVz0DbjR2KyY0fig1Zpmaz5puaB8q0pUq8oGyplLlWlAz1PqnqfQWSqPQWCPR6CQj1AJ9HqPUeglFqLUWgm1W0WqWgLVLRapqgjVK1VtUnVBXdI3pfemfpoC+mmXpo3ppl66Anrpl1TOumTWvoK8ttnLbmcttnLYOny01c9Ody21c9g6HPR+NMPPTTjQNmdG50yY0dnQNOaZms+dGTQHSrykyrSgbKt6VKtKBno9U9T6C/o9U9HoL+j1T0egt6j1X1HoLeotVtVtBa1S1Fql0CbS9aGtF60CNaK3oa0TvQI3pn6aW6aZumwU6aZeul+mmTrsCuu2XWl+u2XWgHNr5AA28GrCADVz/P7rTzAA/J2QANz+f6ZAAXyYACYsACUgAkQAAhIBCAAVqoAKqUAC9FaAArZHRIBn6M3T9wAZerJ1QAZOrLoAH/2Q=="
+                                        height="250" alt="Image" style="max-width:100%;">
+                                    <div class="carousel-caption">
+                                        <h5><a href='' routerLink="/hot-jobs">Google</a></h5>
+                                        <p>Role: Full Stack Developer</p>
+                                        <p><i class="fa fa-black-tie"></i> Experience: 3-5 yrs</p>
+                                        <p><i class="fa fa-map-marker"></i> Location(s): Chennai, Bangalore, Hyderabad, Kolkatta, Pune</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.row-->
+                        </div>
+                        <!--.item-->
+                    </div>
+                    <!--.carousel-inner-->
+                </div>
+                <!--.Carousel-->
+            </div>
+        </div>
+    </div><br>
+    <hr>
+
+    <!-- With Carousel -->
+    <h3>Select by Companies</h3><br>
+    <div class="container">
+        <div class="row blog">
+            <div class="col-md-12">
+                <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+
+                    <ol class="carousel-indicators">
+                        <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#blogCarousel" data-slide-to="1"></li>
+                    </ol>
+
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="https://i1.wp.com/www.mobilecellphonerepairing.com/wp-content/uploads/2013/07/Apple-Logo-1.jpg?resize=450%2C253" width="100px" height="50px">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="https://images.livemint.com/img/2020/05/25/600x338/2020-04-20T123913Z_2_LYNXMPEG3J11I_RTROPTP_3_CANADA-FINTECH_1590430954562_1590430968448.JPG" width="100px" height="50px">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/05/Logo_of_the_LG_Corporation_1995-2008.svg.png?auto=format&q=60&fit=max&w=930" width="100px" height="50px">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="https://wallpaperaccess.com/full/848978.jpg" width="100px" height="50px">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQpzCwkqfVZxTAmWHKIXm3crxbd4pE9Xw_y5abTpA6ifFY4o5j7&usqp=CAU" width="100px" height="50px">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="https://i.pinimg.com/originals/da/5c/d6/da5cd691b732c0311da7c528273359a4.jpg" width="100px" height="50px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSCcNRCGiAngpxZisLtiGXSODjKbx1vqHrwLw5mlG7hoBI4lFiQ&usqp=CAU" width="100px" height="50px">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Mu_Sigma_Logo.jpg" width="100px" height="50px">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="https://indianewengland.com/wp-content/uploads/2017/10/tcs-logo-e1506940808337.png" width="100px" height="50px">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="https://img.maximummedia.ie/her_ie/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvbWVkaWEtaGVyLm1heGltdW1tZWRpYS5pZS5zMy5hbWF6b25hd3MuY29tXFxcL3dwLWNvbnRlbnRcXFwvdXBsb2Fkc1xcXC8yMDE1XFxcLzA4XFxcLzA2MTUzOTM0XFxcL2FtYXpvbi5qcGdcIixcIndpZHRoXCI6NzAwLFwiaGVpZ2h0XCI6MzcwLFwiZGVmYXVsdFwiOlwiaHR0cHM6XFxcL1xcXC93d3cuaGVyLmllXFxcL2Fzc2V0c1xcXC9pbWFnZXNcXFwvaGVyXFxcL25vLWltYWdlLnBuZz9pZD1kNDgyODZlN2RlZWNmYzIzZWVjNlwiLFwib3B0aW9uc1wiOltdfSIsImhhc2giOiI1YWU5M2I3MDA2MTc0OThhZDc2ODQxNDFiNjRjYWJmNGEyNDg0ZTViIn0=/amazon.jpg"
+                                        width="100px" height="50px">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="https://i.pcmag.com/imagery/reviews/07w8uPeOhOqiy3rCsGG5nGf-7.fit_scale.size_1028x578.v_1569479453.jpg" width="100px" height="50px">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE2r0Th?ver=5b7d" width="100px" height="50px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+    <hr>
+
+    <!-- Without using Carousel -->
+    <!-- <h3>Select by Companies</h3><br>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <img
+        src="https://i1.wp.com/www.mobilecellphonerepairing.com/wp-content/uploads/2013/07/Apple-Logo-1.jpg?resize=450%2C253"
+        width="100px" height="50px">
+    </div>
+    <div class="col-2">
+      <img
+        src="https://images.livemint.com/img/2020/05/25/600x338/2020-04-20T123913Z_2_LYNXMPEG3J11I_RTROPTP_3_CANADA-FINTECH_1590430954562_1590430968448.JPG"
+        width="100px" height="50px">
+    </div>
+    <div class="col-2">
+      <img
+        src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/05/Logo_of_the_LG_Corporation_1995-2008.svg.png?auto=format&q=60&fit=max&w=930"
+        width="100px" height="50px">
+    </div>
+    <div class="col-2">
+      <img src="https://wallpaperaccess.com/full/848978.jpg" width="100px" height="50px">
+    </div>
+    <div class="col-2">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQpzCwkqfVZxTAmWHKIXm3crxbd4pE9Xw_y5abTpA6ifFY4o5j7&usqp=CAU"
+        width="100px" height="50px">
+    </div>
+    <div class="col-2">
+      <img src="https://i.pinimg.com/originals/da/5c/d6/da5cd691b732c0311da7c528273359a4.jpg" width="100px"
+        height="50px">
+    </div>
+  </div>
+</div>
+<hr> -->
+
+    <h3>Career tips</h3><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">1. Ready to work from Home? Here's how to be calm and productive
+            </div>
+            <div class="col-4">2. These Best Part time jobs do not require you to be a Topper!
+            </div><br>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-4">3. 8 more Popular Part time jobs for students!!</div>
+            <div class="col-4">4. 10 best skype interview tips for Job Seekers who want to succeed!</div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-4">5. 5 work from home tips for those who genuinely want to work and contribute!!</div>
+            <div class="col-4">6. Top Tips and resources to manage your career and achieve your Goal!!!</div>
+        </div>
+    </div><br>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer text-center py-3">© 2020 Online Jobs, All rights reserved:
+            <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+</body>

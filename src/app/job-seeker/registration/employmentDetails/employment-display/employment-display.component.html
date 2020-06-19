@@ -1,0 +1,34 @@
+<div id="main">
+    <button class="openbtn" (click)="openNav()">Manage Employment Details</button>
+    <br>
+    <div class="card text-center">
+      <div class="card-header"
+        style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 1.5em;background-color: orange;">
+        All Details</div>
+        
+      <div class="row">
+        <div class="col-md-3 mx-max my-4" *ngFor="let job of jobs">
+          <div class="card bg-light mb-3">
+            <div class="card-header">{{job.currentEmployer}}</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{job.destination}}</li>
+              <li class="list-group-item">{{job.currentExperience}}</li>
+              <li class="list-group-item">{{job.previousEmployer}}</li>
+              <li class="list-group-item">{{job.previousExperience}}</li>
+              <li class="list-group-item">
+                <!-- <a class="btn btn-light" [routerLink]="['/job-seeker/employment-edit/'+job._id]">Edit</a>&nbsp;&nbsp; -->
+                <a class="btn btn-danger" (click)="jobDelete(job._id)">Delete</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <a routerLink="/job-seeker/employment-display">All Jobs</a>
+    <a routerLink="/job-seeker/employment">Add Jobs</a>
+  </div>
+  

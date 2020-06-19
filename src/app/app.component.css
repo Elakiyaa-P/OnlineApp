@@ -1,0 +1,30 @@
+* {
+    margin: 0em;
+    padding: 0em;
+}
+
+.navbar-expand-sm {
+    box-shadow: 0em 5px 10px #efefef;
+}
+
+.logo {
+    height: 49px;
+    padding: 2px 10px;
+}
+
+.navbar-toggler-icon {
+    background: orangered;
+}
+
+.nav-link {
+    color: rgb(115, 199, 238);
+}
+
+.navbar {
+    color: rgb(183, 212, 53);
+    padding: 16px 10px;
+}
+
+#b {
+    font-weight: bold;
+}

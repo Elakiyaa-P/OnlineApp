@@ -1,0 +1,75 @@
+<body>
+    <div class="card" style="width: 50%;margin-left: 25%;">
+        <h4 class="card-header"><i class="fa fa-laptop"></i> Educational Details</h4>
+        <div class="card-body">
+            <form action="" #myForm="ngForm">
+
+                <div class="form-group">
+                    <label for="college">College/University</label>
+                    <input type="text" ngModel placeholder="Name of College /University Attendant" #college="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!college.valid && college.touched, 'is-valid': college.valid}" name="college" required pattern="^[A-Za-z_ ]*$"
+                        id="college" [(ngModel)]="job.college" aria-describedby="" />
+                    <small *ngIf="college.errors?.required && college.touched">Field is required!!</small>
+                    <small *ngIf="college.errors?.pattern && college.touched">Enter String</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="yearPassedOn">Year Passed on</label>
+                    <select id="inputState" ngModel name="yearPassedOn" required #yearPassedOn="ngModel" [ngClass]="{'form-control': true,
+        'is-invalid': !yearPassedOn.valid && yearPassedOn.touched,
+        'is-valid': yearPassedOn.valid}" [(ngModel)]="job.yearPassedOn">
+            <option selected value="">Year</option>
+            <option *ngFor="let item of year" [value]="item">{{item}}</option>
+          </select>
+                    <small *ngIf="yearPassedOn.errors?.required && yearPassedOn.touched">Field is required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="graduated">Graduated</label>
+                    <select id="inputState" ngModel name="graduated" required #graduated="ngModel" [ngClass]="{'form-control': true,
+        'is-invalid': !graduated.valid && graduated.touched,
+        'is-valid': graduated.valid}" [(ngModel)]="job.graduated">
+            <option selected value="">Yes/No</option>
+            <option *ngFor="let item of graduate" [value]="item">{{item}}</option>
+          </select>
+                    <small *ngIf="graduated.errors?.required && graduated.touched">Field is required</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="school">Graduated School</label>
+                    <input type="text" ngModel placeholder="Name of Graduated School Attendant" #school="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!school.valid && school.touched, 'is-valid': school.valid}" name="school" required pattern="^[A-Za-z_ ]*$" id="school"
+                        [(ngModel)]="job.school" aria-describedby="" />
+                    <small *ngIf="school.errors?.required && school.touched">Field is required!!</small>
+                    <small *ngIf="school.errors?.pattern && school.touched">Enter School Name</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="yearsAttended">Number of years attendant</label>
+                    <input type="text" ngModel placeholder="In Years" #yearsAttended="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!yearsAttended.valid && yearsAttended.touched, 'is-valid': yearsAttended.valid}" name="yearsAttended" required pattern="^[0-9]{2}$"
+                        id="yearsAttended" [(ngModel)]="job.yearsAttended" aria-describedby="" />
+                    <small *ngIf="yearsAttended.errors?.required && yearsAttended.touched">Field is required!!</small>
+                    <small *ngIf="yearsAttended.errors?.pattern && yearsAttended.touched">Enter number of Years</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Skills/Qualifications</label>
+                    <textarea rows="5" ngModel placeholder="Skills" #skills="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!skills.valid && skills.touched, 'is-valid': skills.valid}" name="skills" required maxlength="300" id="skills" [(ngModel)]="job.skills" aria-describedby=""></textarea>
+                    <small *ngIf="skills.errors?.required && skills.touched">Field is required!!</small>
+                    <small *ngIf="skills.errors?.maxlength && skills.touched">Enter Text upto 300 characters!</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="certification">Certification</label>
+                    <textarea rows="5" ngModel placeholder="Microsoft/Online Certification" #certification="ngModel" [ngClass]="{'form-control':true, 'is-invalid':!certification.valid && certification.touched, 'is-valid': certification.valid}" name="certification" required
+                        maxlength="300" id="certification" [(ngModel)]="job.certification" aria-describedby=""></textarea>
+                    <small *ngIf="certification.errors?.required && certification.touched">Field is required!!</small>
+                    <small *ngIf="certification.errors?.maxlength && certification.touched">Enter Text upto 300 characters!</small>
+                </div>
+
+                <div class="row justify-content-center">
+                    <button type="button" [disabled]="!myForm.form.valid" (click)="submitHandler()" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-link"><a routerLink="/fresher">Back</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
